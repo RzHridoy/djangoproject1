@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+        {% for musician in musician_view %}
+        <ul>
+            <li>ID: {{ musician.id }}</li>
+            <li>Name: <a href="{% url 'artist_album_view' id=musician.id %}">{{ musician.artistName }}</a></li>
+            <li>Type: {{ musician.type }}</li>
+            <li>Image: {{ musician.image }}</li>
+        </ul><hr>
+        {% endfor %}
+
+{% endblock %}

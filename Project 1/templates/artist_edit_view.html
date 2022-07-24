@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Edit Artist Info</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ artist_edit_form.as_p }}
+    <input type="submit", value="Update" class="btn btn-warning">
+</form>
+
+{% endblock %}

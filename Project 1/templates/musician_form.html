@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ musician_form_view.as_p}}
+    <input type="submit" , value="Add Artist" , name="submit" class="btn btn-primary">
+</form>
+
+{% endblock %}

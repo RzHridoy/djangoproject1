@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+    {% if album_view %}
+
+    <table class="table">
+        <thead class="table-dark">
+            <th>ID</th>
+            <th>Artist</th>
+            <th>Album Name</th>
+            <th>Date</th>
+            <th>Rating</th>
+        </thead>
+        {% for album in album_view %}
+        <tr>
+            <td>{{ album.id }}</td>
+            <td>{{ album.artist }}</td>
+            <td><b>{{ album.albumName }}</b></td>
+            <td>{{ album.releaseDate }}</td>
+            <td><b>{{ album.rating }}</b></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}<p>no album</p>
+    {% endif %}
+
+{% endblock %}

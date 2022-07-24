@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h3>
+    <p>{{ artist_detail_view }}</p>
+    <p>Rating: {{ artist_rating_view.rating__avg }}</p>
+    <a href="{% url 'artist_edit_view' id=artist_detail_view.id %}" class="btn btn-info">Edit Artist</a>
+    <a href="{% url 'musician_delete_view' id=artist_detail_view.id %}" class="btn btn-danger">Delete Artist</a>
+</h3>
+
+<h1>List</h1>
+{% if artist_album_view %}
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <th>Album Name</th>
+        <th>Release Date</th>
+        <th>Rating</th>
+        <th>Modify</th>
+    </thead>
+
+    {% for album in artist_album_view %}
+    <tbody>
+        <td>{{ album.albumName }}</td>
+        <td>{{ album.releaseDate }}</td>
+        <td>{{ album.rating }}</td>
+        <td><a href="{% url 'album_edit_view' album_id=album.id %}" class="btn btn-primary">Edit Album</a>
+            <a href="{% url 'album_delete_view' album_id=album.id %}" class="btn btn-danger">Delete Album</a></td>
+    </tbody>
+    {% endfor %}
+
+</table>
+{% else %}
+<h2>NO ALBUM YET</h2>
+{% endif %}
+
+{% endblock %}
